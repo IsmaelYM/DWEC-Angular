@@ -1,1 +1,31 @@
-<p>Componente pokemon</p>
+<div class="container">
+    <h2>Los personajes que tenemos en el array: </h2>
+    <hr />
+    <div class="columns">
+        <div class="column">
+            <p>En el orden del array: </p>
+        </div>
+    </div>
+    <div class="columns is-multiline">
+        <ul class="menu-list column is-one-third" *ngFor="let pokemon of
+   pokemons">
+            <li>
+                
+                <ul class="menu-list">
+                    <img src="{{pokemon.imagen}}" />
+                    <li>Nombre : <span *ngIf="pokemon.nombre; else
+                        na">{{pokemon.nombre}}</span></li>
+                    <li>Categoría : <span *ngIf="pokemon.categoria; else
+                        na">{{pokemon.categoria}}</span></li>
+                    <li>Tipo : <span *ngIf="pokemon.tipo; else
+                        na">{{pokemon.tipo}}</span></li>
+                    <li>Talla : <span *ngIf="pokemon.talla; else
+                        na">{{pokemon.talla}}</span></li>
+                    <li>Peso : <span *ngIf="pokemon.peso; else
+                        na">{{pokemon.peso}}</span></li>
+                    <ng-template #na>N/A</ng-template>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
