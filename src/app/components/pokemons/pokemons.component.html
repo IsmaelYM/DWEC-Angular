@@ -1,30 +1,36 @@
 <div class="container">
-    <h2>Los personajes que tenemos en el array: </h2>
+    <h2>Los Pokemons que tenemos en el array: </h2>
     <hr />
     <div class="columns">
         <div class="column">
             <p>En el orden del array: </p>
+            <p> {{cuenta}} Pokémons en el array</p>
+            <p *ngIf=pokemonSeleccionado>El Pokémon seleccionado es: {{
+                pokemonSeleccionado }}</p>
         </div>
     </div>
+    <form>
+        <div class="field has-addons">
+            <div class="control has-icons-left">
+                <input class="input is-small" name=" pokemonBusca" type="test" placeholder="Nombre del pokemon"
+                    [(ngModel)]="formBuscarPokemon.nombre" (keyup)="buscar(formBuscarPokemon.nombre)">
+            </div>
+            <div class="control">
+                <a class="button is-primary is-small" (click)="buscar(formBuscarPokemon.nombre)">
+                    Buscar
+                </a>
+            </div>
+            <div class="control">
+                <a class="button is-light is-small" (click)="cancelarBuscar()">
+                    Cancelar </a>
+            </div>
+        </div>
+    </form>
     <div class="columns is-multiline">
-        <ul class="menu-list column is-one-third" *ngFor="let pokemon of
-   pokemons">
+        <ul class="menu-list column is-one-third" *ngFor="let pokemon of pokemons">
             <li>
-                
-                <ul class="menu-list">
-                    <img src="{{pokemon.imagen}}" />
-                    <li>Nombre : <span *ngIf="pokemon.nombre; else
-                        na">{{pokemon.nombre}}</span></li>
-                    <li>Categoría : <span *ngIf="pokemon.categoria; else
-                        na">{{pokemon.categoria}}</span></li>
-                    <li>Tipo : <span *ngIf="pokemon.tipo; else
-                        na">{{pokemon.tipo}}</span></li>
-                    <li>Talla : <span *ngIf="pokemon.talla; else
-                        na">{{pokemon.talla}}</span></li>
-                    <li>Peso : <span *ngIf="pokemon.peso; else
-                        na">{{pokemon.peso}}</span></li>
-                    <ng-template #na>N/A</ng-template>
-                </ul>
+                <app-pokemon [pokemon]=pokemon (eventoClicImagen)="
+           pokemonSeleccionado =$event"></app-pokemon>
             </li>
         </ul>
     </div>
